@@ -9,11 +9,9 @@
 </head>
 <body>
 
-<!-- Header section -->
 <header class="header">
     <a href="#home" class="logo">Ahmed Wakil</a>
 
-    <!-- MENU TOGGLE ICON (Used on Mobile) -->
     <i class='bx bx-menu' id="menu-icon"></i>
 
     <nav class="navbar">
@@ -21,15 +19,10 @@
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
-        <a href="#problemsolving">Problem Solving</a>
-        <a href="#contact">Contact</a>
-        
-        <!-- DARK MODE TOGGLE BUTTON ADDED HERE -->
         <i class='bx bx-moon' id="theme-toggle"></i>
     </nav>
 </header>
 
-<!--home section code (Home section animations are already handled by keyframes)-->
 <section class="home" id="home">
     <div class="home-img">
         <img src="me.JPG" alt="profile image">
@@ -38,7 +31,6 @@
     <div class="home-content">
         <h3>Hello, I'm</h3>
         <h1>Ahmed Wakil</h1>
-        <!-- UPDATED: Text cycling happens inside the span via JS -->
         <h3>And I'm a <span id="role-text" class="typing"></span></h3>
         <p>
             Welcome to my portfolio website! I'm a passionate web developer with a knack for creating 
@@ -46,6 +38,9 @@
         </p>
 
         <div class="social-media">
+            <a href="mailto:ahmedwakil921@gmail.com" title="Email Me">
+                <i class='bx bxs-envelope'></i>
+            </a>
             <a href="https://www.linkedin.com/in/ahmed-wakil-890777330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">
                 <i class='bx bxl-linkedin'></i>
             </a>
@@ -60,7 +55,6 @@
     </div>
 </section>
 
-<!-- about section code-->
 <section class="about" id="about">
     <div class="about-content animate">
         <h2 class ="heading animate">about <span>Me</span></h2>
@@ -74,7 +68,6 @@
 
 </section>
 
-<!-- SECTION: Skills (New Content from CV) -->
 <section class="skills" id="skills">
     <h2 class="heading animate">My <span>Skills</span></h2>
     <div class="skills-container animate">
@@ -119,7 +112,6 @@
 </section>
 
 
-<!-- SECTION: Projects -->
 <section class="projects" id="projects">
     <h2 class="heading animate">Recent <span>Projects</span></h2>
     <div class="projects-container animate">
@@ -169,119 +161,17 @@
     </div>
 </section>
 
-<!-- SECTION: Problem Solving (Now contains the CTO Case Study & Interactive Menu) -->
-<section class="problemsolving" id="problemsolving">
-    <h2 class="heading animate">Problem <span>Solving</span></h2>
-
-    <div class="problemsolving-container animate">
-        
-        <!-- CTO Introduction and Digital Transformation Goals (Assessment Content) -->
-        <div class="cto-case-study">
-            <p>As the **Chief Technology Officer (CTO)** of "Rhythm & Feast," a local restaurant specializing in music genre-themed cuisine, my goal is to execute a digital transformation centered on enhancing the unique customer experience.
-            </p>
-            <h3 class="sub-heading">🎧 Digital Transformation Goals: Rhythm & Feast</h3>
-            <p>Our web-based solution aims to achieve three core goals:</p>
-
-            <ul>
-                <li>**Improve Customer Engagement (Thematic Experience):** Digitize our unique value proposition—connecting music and food—by making our special menu and concept immediately accessible and engaging online.</li>
-                <li>**Streamline Bookings & Service:** Replace manual booking and inquiry methods with a self-service interactive form, ensuring all critical customer data (date, time, party size) is captured accurately and immediately communicated to staff via email.</li>
-                <li>**Modernize Communication & Local Presence:** Establish a professional, central digital hub that links seamlessly to social media and provides crucial location/contact information, strengthening local trust and accessibility.</li>
-            </ul>
-        </div>
-        
-        <!-- NEW: Genre Selector Wrapper and Menu Control -->
-        <div class="genre-selector-wrapper animate">
-            <h3 class="sub-heading">Interactive Prototype: Music Genre Selector</h3>
-            <div class="genre-selector" id="genre-selector">
-                <div class="genre-option active" data-genre="all">Full Menu</div>
-                <div class="genre-option" data-genre="classical">Classical</div>
-                <div class="genre-option" data-genre="hiphop">Hip Hop</div>
-                <div class="genre-option" data-genre="rock">Rock</div>
-                <div class="genre-option" data-genre="jazz">Jazz</div>
-            </div>
-        </div>
-
-        <!-- INTERACTIVE MENU COMPONENT -->
-        <div class="menu-interactive animate" id="menu-interactive">
-            <!-- Menu items are rendered here by JavaScript -->
-        </div>
-
-    </div>
-</section>
-
-<!-- SECTION: Contact (Assessment Required Elements) -->
-<section class="contact" id="contact">
-    <h2 class="heading animate">Book Your <span>Experience</span></h2>
-
-    <div class="contact-container animate">
-        
-        <!-- Assessment Required Elements START -->
-        <form action="mailto:rhythmandfeast@example.com?subject=New Reservation/Inquiry" method="POST" enctype="text/plain">
-            
-            <!-- Contact Details & Social Links -->
-            <div class="contact-details">
-                <h3>Contact Details & Socials:</h3>
-                <p>📞 Phone: (555) 123-4567 | 📧 Email: info@rhythmandfeast.com</p>
-                <p>📍 Address: 101 Rhythm Lane, Food City, CA 90210</p>
-                
-                <!-- Social Media Links (as requested) -->
-                <div class="social-media">
-                    <a href="https://www.facebook.com"><i class='bx bxl-facebook'></i></a>
-                    <a href="https://www.instagram.com"><i class='bx bxl-instagram'></i></a>
-                    <a href="https://www.twitter.com"><i class='bx bxl-twitter'></i></a>
-                </div>
-                <hr>
-            </div>
-            
-            <!-- Interactive Booking Form -->
-            <div class="input-box">
-                <input type="text" name="Name" placeholder="Full Name" required>
-                <input type="email" name="Email" placeholder="Email Address" required>
-            </div>
-            
-            <div class="input-box">
-                <input type="number" name="Party Size" placeholder="Number of Guests" min="1" required>
-                <input type="date" name="Booking Date" required>
-            </div>
-            
-            <div class="input-box">
-                <input type="time" name="Booking Time" required>
-            </div>
-
-            <textarea name="Message/Feedback" cols="30" rows="10" placeholder="Special Request or Feedback"></textarea>
-            
-            <!-- Form automatically generates email with user input (mailto) -->
-            <input type="submit" value="Send Booking/Inquiry" class="btn">
-        </form>
-
-        <!-- Map Display: Embedded map with external link button -->
-        <div class="map-container">
-            <h3 class="heading">Find Us</h3>
-            
-            <!-- Embedded Map -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.250552726526!2d-122.41941558468165!3d37.77492997975936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085806c9b9b0001%3A0x7d25e0a6d0d5b4e!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1636545123456!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-
-            <!-- External Link Button using existing .btn styling -->
-            <a href="https://www.google.com/maps/search/?api=1&query=101+Rhythm+Lane,+Food+City,+CA+90210" target="_blank" class="btn map-external-link">
-                View Full Map <i class='bx bx-map'></i>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
 <footer>
-    <p style="text-align: center; padding: 2rem; background: var(--secondary-color); color: var(--main-color); margin-top: 0;">&copy; 2025 Ahmed Wakil Portfolio</p>
+    <p style="text-align: center; padding: 2rem; background: var(--secondary-color); color: var(--main-color); margin-top: 0;">© 2025 Ahmed Wakil Portfolio</p>
 </footer>
 
-<!-- JAVASCRIPT FOR SCROLL ANIMATIONS, DARK MODE, AND TYPING EFFECT -->
 <script>
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.navbar a');
     const animatedElements = document.querySelectorAll('.animate');
     const themeToggle = document.getElementById('theme-toggle');
     const menuIcon = document.getElementById('menu-icon'); 
-    const navBar = document.querySelector('.navbar');       
+    const navBar = document.querySelector('.navbar');      
     const body = document.body;
     
     // --- TYPING ANIMATION LOGIC ---
@@ -435,76 +325,8 @@
     // Initial check for elements already in view on page load
     scrollHandler();
     
-    // --- INTERACTIVE MENU LOGIC ---
-    const menuItems = {
-        all: [
-            { icon: 'bx-music', title: 'Classical Overture', desc: 'Delicate French Onion Soup. Elegant and timeless. (Mood: Orchestral)', price: '£8.50', genre: 'classical' },
-            { icon: 'bx-microphone', title: 'Hip Hop Fusion', desc: 'Spicy Korean BBQ Tacos with a lime kick. Bold and complex. (Mood: Street Style)', price: '£14.99', genre: 'hiphop' },
-            { icon: 'bx-volume-full', title: 'Rock Anthem Platter', desc: 'Bourbon-glazed Chili Ribs served with a heavy side of smoked beans. (Mood: Hard & Heavy)', price: '£21.00', genre: 'rock' },
-            { icon: 'bx-headphone', title: 'Jazz Riff Dessert', desc: 'Warm Chocolate Lava Cake with cool vanilla bean ice cream. Smooth and improvised. (Mood: Velvet Smooth)', price: '£9.25', genre: 'jazz' },
-            { icon: 'bx-git-branch', title: 'R&B Slow Jam', desc: 'Smoked Salmon Risotto with Creamy Dill Sauce. Comforting and soulful.', price: '£18.00', genre: 'rnb' }
-        ],
-        classical: [
-            { icon: 'bx-music', title: 'Classical Overture', desc: 'Delicate French Onion Soup. Elegant and timeless. (Mood: Orchestral)', price: '£8.50' },
-            { icon: 'bx-wine', title: 'Vivace Salad', desc: 'Light, crisp greens with raspberry vinaigrette and candied pecans.', price: '£7.00' }
-        ],
-        hiphop: [
-            { icon: 'bx-microphone', title: 'Hip Hop Fusion', desc: 'Spicy Korean BBQ Tacos with a lime kick. Bold and complex. (Mood: Street Style)', price: '£14.99' },
-            { icon: 'bx-layer-plus', title: 'Mixtape Fries', desc: 'Loaded fries with three layers of cheese, bacon, and chili.', price: '£11.50' }
-        ],
-        rock: [
-            { icon: 'bx-volume-full', title: 'Rock Anthem Platter', desc: 'Bourbon-glazed Chili Ribs served with a heavy side of smoked beans. (Mood: Hard & Heavy)', price: '£21.00' },
-            { icon: 'bx-band-aid', title: 'Power Chord Burger', desc: 'Triple patty burger with aged cheddar and smoky BBQ sauce.', price: '£16.50' }
-        ],
-        jazz: [
-            { icon: 'bx-headphone', title: 'Jazz Riff Dessert', desc: 'Warm Chocolate Lava Cake with cool vanilla bean ice cream. Smooth and improvised. (Mood: Velvet Smooth)', price: '£9.25' },
-            { icon: 'bx-coffee', title: 'Blue Note Espresso', desc: 'Rich espresso with a hint of caramel and sea salt.', price: '£4.00' }
-        ]
-    };
-
-    const menuContainer = document.getElementById('menu-interactive');
-    const genreOptions = document.querySelectorAll('.genre-option');
-
-    function renderMenu(genre) {
-        menuContainer.innerHTML = '';
-        const items = menuItems[genre] || menuItems.all;
-
-        items.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'menu-item-card';
-            card.innerHTML = `
-                <i class='bx ${item.icon}' ></i>
-                <h4>${item.title}</h4>
-                <p>${item.desc}</p>
-                <span class="price">${item.price}</span>
-            `;
-            menuContainer.appendChild(card);
-        });
-    }
-
-    function handleGenreSelection(event) {
-        // Find the closest option element
-        const option = event.target.closest('.genre-option');
-        if (!option) return;
-        
-        // Remove active class from all options
-        genreOptions.forEach(opt => opt.classList.remove('active'));
-        
-        // Set the active class on the clicked option
-        option.classList.add('active');
-        
-        // Render the corresponding menu
-        const genre = option.getAttribute('data-genre');
-        renderMenu(genre);
-    }
-    
-    // Attach listener to the selector wrapper
-    document.getElementById('genre-selector').addEventListener('click', handleGenreSelection);
-
-    // Initial render when the page loads
-    document.addEventListener('DOMContentLoaded', () => {
-        renderMenu('all');
-    });
+    // --- INTERACTIVE MENU LOGIC (REMOVED: Only included dummy content for the script structure) ---
+    // NOTE: The Problem Solving section logic and dependencies have been removed.
 
 </script>
 
