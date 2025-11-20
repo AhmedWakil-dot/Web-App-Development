@@ -1,938 +1,512 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    scroll-behavior: smooth;
-    font-family: -apple-system, sans-serif;
-}
-:root {
-    /* LIGHT MODE DEFAULTS */
-    --bg-color:#fdfdfd;       /* Main light background (Home, Problem Solving) */
-    --secondary-color: #64aae7; /* Accent Blue */
-    --text-color: #000000;    /* Main black text */
-    --main-color: #ffffff;    /* Primary White for containers/buttons/accents */
-    --snd-bg-color: #e5e5e5;  /* Secondary light background (About, Contact) */
-    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+    <title>Ahmed Wakil - Web Developer Portfolio</title>
+</head>
+<body>
 
-/* DARK MODE VARIABLES (Applied to body via JS) */
-body.dark-mode {
-    --bg-color: #000000;      /* Pure Black Main background */
-    --snd-bg-color: #1a1a1a;  /* Dark gray Secondary background */
-    --text-color: #ffffff;    /* Pure White text */
-    --main-color: #333333;    /* Dark container background */
-}
+<!-- Header section -->
+<header class="header">
+    <a href="#home" class="logo">Ahmed Wakil</a>
 
-/* Removed global animated background keyframes/styles */
+    <!-- MENU TOGGLE ICON (Used on Mobile) -->
+    <i class='bx bx-menu' id="menu-icon"></i>
 
-html {
-    font-size: 100%; /* Base for standard 16px interpretation */
-    overflow-x : hidden;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    font-family: var(--font-family);
-    font-size: 1.6rem;
-    line-height: 1.6;
-    /* Added transition for smooth theme switch */
-    transition: background-color 0.5s, color 0.5s; 
-}
-
-section {
-    min-height : 100vh;
-    padding : 10rem 9% 2rem;
-    /* Added perspective for 3D card animation */
-    perspective: 1500px; 
-    position: relative; /* Required for the animated pseudo-element */
-    z-index: 1; /* Ensures content is above the animation */
-}
-
-/* --- SCROLL ANIMATION CLASSES --- */
-.animate {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: all 1s ease-in-out;
-}
-
-.show-animate {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Specific animation for headings (cleaner movement) */
-.animate.heading {
-    transform: translateX(-50px);
-}
-.show-animate.heading {
-    transform: translateX(0);
-}
-/* ---------------------------------- */
-
-/* --- TYPING EFFECT STYLING --- */
-.typing {
-    /* Ensures the span is visible even when empty */
-    min-width: 0.8rem; 
-    /* Ensures the text is the secondary color */
-    color: var(--secondary-color);
-    position: relative;
-    display: inline-block;
-}
-
-/* Typing cursor animation: ONLY visible when .typing is PRESENT */
-.typing::after {
-    content: '|';
-    position: absolute;
-    right: -0.5rem;
-    top: -0.2rem;
-    font-size: 1.1em;
-    animation: blink 0.7s infinite;
-}
-
-@keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
-}
-/* ---------------------------------- */
-
-
- /* header section code */
- .header {
-    position: fixed;
-    width : 100%;
-    top: 0;
-    right : 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Ensures vertical alignment */
-    padding : 2rem 9%;
-    background : var(--secondary-color);
-    backdrop-filter: blur(10px);
-    transition : all 0.5s ease;
-    }
-
-    .logo {
-        font-size: 3rem;
-        font-weight: 700;
-        color : var(--main-color);
-        cursor : pointer;
-        transition : all 0.3s ease;
-        }
-
-        .logo:hover {
-            transform : scale(1.05);
-        }
+    <nav class="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#problemsolving">Problem Solving</a>
+        <a href="#contact">Contact</a>
         
-        .navbar {
-            display: flex; /* Makes the navbar and toggle button align horizontally */
-            align-items: center;
-        }
+        <!-- DARK MODE TOGGLE BUTTON ADDED HERE -->
+        <i class='bx bx-moon' id="theme-toggle"></i>
+    </nav>
+</header>
 
-        .navbar a {
-            font-size: 1.9rem; /* RESTORED LARGER SIZE */
-            color : var(--main-color);
-            margin-left : 4rem; /* RESTORED LARGER SPACING */
-            font-weight: 700;
-            transition : 0.3s ease;
+<!--home section code (Home section animations are already handled by keyframes)-->
+<section class="home" id="home">
+    <div class="home-img">
+        <img src="me.JPG" alt="profile image">
+    </div>
 
-        }
-        .navbar a:hover,
-        .navbar a.active {
-            color : var(--main-color); /* Kept white for contrast on blue header */
-            border-bottom: 0.3rem solid var(--main-color);
-        }
+    <div class="home-content">
+        <h3>Hello, I'm</h3>
+        <h1>Ahmed Wakil</h1>
+        <!-- UPDATED: Text cycling happens inside the span via JS -->
+        <h3>And I'm a <span id="role-text" class="typing"></span></h3>
+        <p>
+            Welcome to my portfolio website! I'm a passionate web developer with a knack for creating 
+            dynamic and responsive web applications. Explore my skills, projects, and get in touch!
+        </p>
+
+        <div class="social-media">
+            <a href="https://www.linkedin.com/in/ahmed-wakil-890777330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app">
+                <i class='bx bxl-linkedin'></i>
+            </a>
+            <a href="https://github.com/AhmedWakil-dot">
+                <i class='bx bxl-github'></i>
+            </a>
+            <a href="https://www.instagram.com/wwakil_fr/?utm_source=ig_web_button_share_sheet">
+                <i class='bx bxl-instagram'></i>
+            </a>
+        </div>
+        <a href="https://docs.google.com/document/d/e/2PACX-1vREWfeM7oUBdTcb-3kfvCMn-SMsVOJGtu0fI4PybgbnXmwhoXu8k1PXtevl4__1mg/pub" class="btn">Download CV</a>
+    </div>
+</section>
+
+<!-- about section code-->
+<section class="about" id="about">
+    <div class="about-content animate">
+        <h2 class ="heading animate">about <span>Me</span></h2>
+        <h3>i'm a <span>Frontend Developer</span></h3>
+        <p>I am a motivated and results-oriented Business Management with Innovation and Technology student with a passion for transforming commercial challenges into effective digital solutions. While I am grounded in strong business strategy and data analysis, I possess practical expertise in front-end development (HTML, CSS, JavaScript) and back-end logic with Python. I thrive in collaborative environments, and my professional experience—from securing strategic corporate partnerships to managing complex installations—shows my commitment to successful execution. I am constantly eager to learn and ready to leverage both my technical and business acumen on impactful web development projects.</p>
+        <a href="https://docs.google.com/document/d/e/2PACX-1vREWfeM7oUBdTcb-3kfvCMn-SMsVOJGtu0fI4PybgbnXmwhoXu8k1PXtevl4__1mg/pub" class="btn">Download CV</a>
+    </div>
+    <div class="about-img animate">
+        <img src="me.JPG" alt="about image"> 
+    </div>
+
+</section>
+
+<!-- SECTION: Skills (New Content from CV) -->
+<section class="skills" id="skills">
+    <h2 class="heading animate">My <span>Skills</span></h2>
+    <div class="skills-container animate">
         
-        /* Standardized menu button ID */
-        #menu-icon { 
-            font-size: 3.6rem; /* RESTORED LARGER SIZE */
-            color : var(--main-color);
-            cursor : pointer;
-            display : none; /* Hidden by default on desktop */
-        }
-
-        /* --- Theme Toggle Button Styling --- */
-        #theme-toggle {
-            font-size: 2.4rem; /* RESTORED LARGER SIZE */
-            color: var(--main-color);
-            cursor: pointer;
-            margin-left: 4rem; /* RESTORED LARGER SPACING */
-            transition: color 0.3s, transform 0.3s;
-        }
+        <div class="skills-card">
+            <i class='bx bxs-group'></i>
+            <h3>Communication</h3>
+            <ul>
+                <li>Successfully engaged with key corporate stakeholders and decision-makers, building relationships and tailoring presentations to highlight commercial value.</li>
+                <li>Secured business commitments by effectively communicating a clear, customised value proposition based on client-specific needs and market impact.</li>
+            </ul>
+        </div>
         
-        #theme-toggle:hover {
-            transform : scale(1.1);
-        }
+        <div class="skills-card">
+            <i class='bx bxs-user-account'></i>
+            <h3>Leadership</h3>
+            <ul>
+                <li>Led focused training initiatives to enhance team performance in advanced business developments and effective lead generation techniques.</li>
+                <li>Mentored colleagues on client engagement strategies, measurably increasing their capacity for successful, independent station installations.</li>
+            </ul>
+        </div>
         
-        /* ---------------------------------- */
-       
-        /* home section code */
-        .home { 
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    /* ENSURE BACKGROUND COLOR FOLLOWS THEME */
-    background: var(--bg-color); 
-    color: var(--text-color);
-    /* ----------------------------------- */
+        <div class="skills-card">
+            <i class='bx bx-laptop'></i>
+            <h3>Technical Skills</h3>
+            <ul>
+                <li>Applied formal skills in Data Analysis acquired through L4 Business and IT coursework to inform and validate strategic recommendations.</li>
+                <li>Experienced in both front-end development (HTML, CSS, JavaScript) and back-end coding (Python), developed within the Business Intelligence module.</li>
+            </ul>
+        </div>
 
-        }
-        .home-img img {
-    /* Set a reasonable maximum size for desktop, keeping 25vw for responsiveness */
-    max-width: 400px; /* RESTORED LARGER SIZE */
-    width: 25vw;
-    height: 25vw; 
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 25px var(--secondary-color);
-    cursor: pointer;
-    animation: floatimage 4s ease-in-out infinite;
-    transition: 0.4s ease;
-}
+        <div class="skills-card">
+            <i class='bx bx-brain'></i>
+            <h3>Problem Solving (Business Focus)</h3>
+            <ul>
+                <li>Overcame initial stakeholder scepticism by developing and presenting compelling, data-driven business cases to articulate the commercial benefits of charging infrastructure.</li>
+                <li>Secured multiple strategic installations across the hospitality sector (restaurants and hotels) by proactively addressing complex sales objections.</li>
+            </ul>
+        </div>
 
-.home-img img:hover {
-    box-shadow: 0 0 25px var(--secondary-color), 0 0 35px var(--secondary-color), 0 0 45px var(--secondary-color);
-}
-@keyframes floatimage {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-2.4rem);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
+    </div>
+</section>
 
-/* NEW KEYFRAMES FOR FLASHIER ENTRANCE */
-@keyframes fadeInTop {
-    0% { transform: translateY(50px); opacity: 0; }
-    100% { transform: translateY(0); opacity: 1; }
-}
-@keyframes slideInRight {
-    0% { transform: translateX(100px); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
-}
 
-.home-content {
-    margin-left: 5rem;
-}
+<!-- SECTION: Projects -->
+<section class="projects" id="projects">
+    <h2 class="heading animate">Recent <span>Projects</span></h2>
+    <div class="projects-container animate">
+        
+        <div class="project-card">
+            <div class="project-content">
+                <i class='bx bx-bowl-hot'></i>
+                <h3>Student Health Presentation</h3>
+                <span class="role">Role: Lead Researcher & Presenter</span>
+                <div class="project-details">
+                    <h4>Problem Addressed:</h4>
+                    <p>The lack of awareness among students regarding how poor nutrition, diet, and lifestyle choices negatively impact mental clarity, stress levels, and academic performance during high-pressure times like exam periods.</p>
+                    <h4>Outcome:</h4>
+                    <p>Developed and delivered a comprehensive presentation to university peers and staff detailing the physiological effects of specific foods (e.g., high sugar, high caffeine) on cognitive function. The presentation provided actionable, evidence-based recommendations for meal planning and nutritional habits to optimize performance and reduce stress.</p>
+                </div>
+            </div>
+        </div>
 
-.home-content h3 {
-    font-size: 3.7rem; /* RESTORED LARGER SIZE */
-    font-weight:700;
-    /* Flashy Entrance 1: Hello, I'm */
-    opacity: 0;
-    animation: fadeInTop 1s ease 0.5s forwards;
-}
-   
-.home-content h3:nth-of-type(2) {
-    margin-bottom: 2rem;
-    /* Flashy Entrance 3: Web Developer */
-    opacity: 0;
-    animation: fadeInTop 1s ease 1.5s forwards;
-}
+        <div class="project-card">
+            <div class="project-content">
+                <i class='bx bx-bar-chart-alt-2'></i>
+                <h3>Social Media Data Analysis Report</h3>
+                <span class="role">Role: Data Analyst & Visualization Expert</span>
+                <div class="project-details">
+                    <h4>Problem Addressed:</h4>
+                    <p>Social media companies needed genre-specific, data-driven insights to optimize ad placement and targeting for video creators, maximizing campaign reach and ROI.</p>
+                    <h4>Outcome:</h4>
+                    <p>Created a detailed data model and report, visualizing key metrics (subscriber count, average views, video genre, and engagement rates) for the top 100 UK YouTubers. This analysis enabled social media platforms to segment creators by audience type, providing advertisers with targeted data on which genres/creators guaranteed the highest conversion rates for their ads.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <div class="project-content">
+                <i class='bx bx-desktop'></i>
+                <h3>Agricultural Produce Website</h3>
+                <span class="role">Role: Frontend Developer & UX Designer</span>
+                <div class="project-details">
+                    <h4>Problem Addressed:</h4>
+                    <p>A local agricultural produce company needed a modern, trustworthy digital presence to expand its market beyond local sales and improve customer ordering efficiency.</p>
+                    <h4>Outcome:</h4>
+                    <p>Designed and built a responsive e-commerce website that streamlined product presentation and ordering. The successful digital transformation resulted in a measurable increase in customer traffic by 40% and contributed directly to a significant increase in monthly revenue due to improved online order capacity and visibility.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- SECTION: Problem Solving (Now contains the CTO Case Study & Interactive Menu) -->
+<section class="problemsolving" id="problemsolving">
+    <h2 class="heading animate">Problem <span>Solving</span></h2>
+
+    <div class="problemsolving-container animate">
+        
+        <!-- CTO Introduction and Digital Transformation Goals (Assessment Content) -->
+        <div class="cto-case-study">
+            <p>As the **Chief Technology Officer (CTO)** of "Rhythm & Feast," a local restaurant specializing in music genre-themed cuisine, my goal is to execute a digital transformation centered on enhancing the unique customer experience.
+            </p>
+            <h3 class="sub-heading">🎧 Digital Transformation Goals: Rhythm & Feast</h3>
+            <p>Our web-based solution aims to achieve three core goals:</p>
+
+            <ul>
+                <li>**Improve Customer Engagement (Thematic Experience):** Digitize our unique value proposition—connecting music and food—by making our special menu and concept immediately accessible and engaging online.</li>
+                <li>**Streamline Bookings & Service:** Replace manual booking and inquiry methods with a self-service interactive form, ensuring all critical customer data (date, time, party size) is captured accurately and immediately communicated to staff via email.</li>
+                <li>**Modernize Communication & Local Presence:** Establish a professional, central digital hub that links seamlessly to social media and provides crucial location/contact information, strengthening local trust and accessibility.</li>
+            </ul>
+        </div>
+        
+        <!-- NEW: Genre Selector Wrapper and Menu Control -->
+        <div class="genre-selector-wrapper animate">
+            <h3 class="sub-heading">Interactive Prototype: Music Genre Selector</h3>
+            <div class="genre-selector" id="genre-selector">
+                <div class="genre-option active" data-genre="all">Full Menu</div>
+                <div class="genre-option" data-genre="classical">Classical</div>
+                <div class="genre-option" data-genre="hiphop">Hip Hop</div>
+                <div class="genre-option" data-genre="rock">Rock</div>
+                <div class="genre-option" data-genre="jazz">Jazz</div>
+            </div>
+        </div>
+
+        <!-- INTERACTIVE MENU COMPONENT -->
+        <div class="menu-interactive animate" id="menu-interactive">
+            <!-- Menu items are rendered here by JavaScript -->
+        </div>
+
+    </div>
+</section>
+
+<!-- SECTION: Contact (Assessment Required Elements) -->
+<section class="contact" id="contact">
+    <h2 class="heading animate">Book Your <span>Experience</span></h2>
+
+    <div class="contact-container animate">
+        
+        <!-- Assessment Required Elements START -->
+        <form action="mailto:rhythmandfeast@example.com?subject=New Reservation/Inquiry" method="POST" enctype="text/plain">
             
-span {
-    color : var(--secondary-color);
-}
-.home-content h1 {
-    font-size: 6rem; /* RESTORED LARGER SIZE */
-    font-weight: 700;
-    line-height: 1.3;
-    color: var(--text-color);
-    /* Flashy Entrance 2: Ahmed Wakil */
-    opacity: 0;
-    animation: slideInRight 1s ease 1s forwards;
-}
+            <!-- Contact Details & Social Links -->
+            <div class="contact-details">
+                <h3>Contact Details & Socials:</h3>
+                <p>📞 Phone: (555) 123-4567 | 📧 Email: info@rhythmandfeast.com</p>
+                <p>📍 Address: 101 Rhythm Lane, Food City, CA 90210</p>
+                
+                <!-- Social Media Links (as requested) -->
+                <div class="social-media">
+                    <a href="https://www.facebook.com"><i class='bx bxl-facebook'></i></a>
+                    <a href="https://www.instagram.com"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://www.twitter.com"><i class='bx bxl-twitter'></i></a>
+                </div>
+                <hr>
+            </div>
+            
+            <!-- Interactive Booking Form -->
+            <div class="input-box">
+                <input type="text" name="Name" placeholder="Full Name" required>
+                <input type="email" name="Email" placeholder="Email Address" required>
+            </div>
+            
+            <div class="input-box">
+                <input type="number" name="Party Size" placeholder="Number of Guests" min="1" required>
+                <input type="date" name="Booking Date" required>
+            </div>
+            
+            <div class="input-box">
+                <input type="time" name="Booking Time" required>
+            </div>
 
-.home-content p {
-    font-size: 1.6rem;
-    /* Flashy Entrance 4: Paragraph */
-    opacity: 0;
-    animation: fadeInTop 1s ease 2s forwards;
-    /* Increased margin to lower social media icons */
-    margin-bottom: 3rem; 
-}
-.social-media {
-    /* Flashy Entrance 5: Social Icons */
-    opacity: 0;
-    animation: fadeInTop 1s ease 2.5s forwards;
-}
-.social-media a {
-    /* Corrected typo to inline-flex */
-    display : inline-flex;
-    justify-content: center;
-    align-items : center;
-    /* Increased size for better tap target and visual appeal */
-    width : 48px;
-    height : 48px;
-    background: transparent;
-    border: 0.2rem solid var(--secondary-color);
-    /* Ensure icon color matches accent in both modes */
-    color : var(--secondary-color); 
-    /* Increased font size for the icon itself */
-    font-size: 2.4rem;
-    border-radius: 50%;
-    margin-right : 1rem;
-    transition :  0.3s ease;
-}
-.social-media a:hover {
-    background : var(--secondary-color);
-    color : var(--bg-color); /* Lightest color for hover text/icon contrast */
-    /* Combined transform functions for smooth flash */
-    transform : scale(1.2) translateY(-10px);
-    box-shadow: 0 0 25px var(--secondary-color);
-}
-.btn {
-    display : inline-block;
-    padding : 1rem 2.8rem;
-    background : var(--secondary-color);
-    font-size: 1.6rem;
-    border-radius: 4rem;
-    margin-top : 2rem;
-    /* Fixed issues and added Entrance 6 */
-    box-shadow: none; 
-    color: var(--main-color); /* Main color for contrast against secondary color */
-    cursor : pointer;
-    opacity: 0;
-    animation: fadeInTop 1s ease 3s forwards;
-    transition : all 0.4s ease;
-}
-.btn:hover {
-    background : var(--text-color); /* Changed to text color for hover contrast */
-    color : var(--bg-color); /* Use background color for text on dark hover */
-    box-shadow: 0 0 25px var(--secondary-color);
-    transform : scale(1.05);
-}
- 
-/*about section code*/
-.about {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    background : var(--snd-bg-color);
-}
+            <textarea name="Message/Feedback" cols="30" rows="10" placeholder="Special Request or Feedback"></textarea>
+            
+            <!-- Form automatically generates email with user input (mailto) -->
+            <input type="submit" value="Send Booking/Inquiry" class="btn">
+        </form>
 
-.about-img img {
-    width: 25vw;
-    height: 25vw;
-    object-fit: cover;
-    border-radius: 50%;
-    box-shadow: 0 0 25px var(--secondary-color);
-    cursor: pointer;  
-    transition: 0.4s ease;
-}
+        <!-- Map Display: Embedded map with external link button -->
+        <div class="map-container">
+            <h3 class="heading">Find Us</h3>
+            
+            <!-- Embedded Map -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.250552726526!2d-122.41941558468165!3d37.77492997975936!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085806c9b9b0001%3A0x7d25e0a6d0d5b4e!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1636545123456!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
-.about-img img:hover {
-    box-shadow: 0 0 25px var(--secondary-color), 0 0 35px var(--secondary-color), 0 0 45px var(--secondary-color);
-}
+            <!-- External Link Button using existing .btn styling -->
+            <a href="https://www.google.com/maps/search/?api=1&query=101+Rhythm+Lane,+Food+City,+CA+90210" target="_blank" class="btn map-external-link">
+                View Full Map <i class='bx bx-map'></i>
+            </a>
+        </div>
+    </div>
+</section>
 
-.heading {
-    font-size: 6rem; /* RESTORED LARGER SIZE */
-    text-align : center;
-}
+<!-- Footer -->
+<footer>
+    <p style="text-align: center; padding: 2rem; background: var(--secondary-color); color: var(--main-color); margin-top: 0;">&copy; 2025 Ahmed Wakil Portfolio</p>
+</footer>
 
-.about-content {
-    padding :0 4rem;
-}
-
-.about-content h2 {
-    text-align  : left;
-    line-height : 1.2;
-}
-
-.about-content h3 {
-    font-size: 3rem; /* RESTORED LARGER SIZE */
+<!-- JAVASCRIPT FOR SCROLL ANIMATIONS, DARK MODE, AND TYPING EFFECT -->
+<script>
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.navbar a');
+    const animatedElements = document.querySelectorAll('.animate');
+    const themeToggle = document.getElementById('theme-toggle');
+    const menuIcon = document.getElementById('menu-icon'); 
+    const navBar = document.querySelector('.navbar');       
+    const body = document.body;
     
-}
-
-.about-content p {
-    margin : 2rem 0 3rem;
-    font-size: 1.6rem;
-    
-}
-
-/* NEW SECTION STYLES: SKILLS */
-.skills {
-    background: var(--bg-color);
-}
-
-.skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
-    gap: 2.5rem;
-    margin-top: 5rem;
-}
-
-.skills-card {
-    background: var(--snd-bg-color);
-    padding: 3rem;
-    border-radius: 0.8rem;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    /* APPLYING PROJECT ANIMATION HERE */
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    transform-style: preserve-3d;
-    text-align: left;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-/* 3D and Lift Effect on Hover */
-.skills-card:hover {
-    /* Lift and rotate slightly in 3D space */
-    transform: translateY(-15px) rotateX(5deg) rotateY(-5deg);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 30px var(--secondary-color);
-}
-
-
-.skills-card i {
-    font-size: 4rem;
-    color: var(--secondary-color);
-    margin-bottom: 1.5rem;
-    transition: all 0.5s ease;
-}
-.skills-card:hover i {
-    transform: scale(1.1) rotate(5deg);
-}
-
-.skills-card h3 {
-    font-size: 2.5rem; /* RESTORED LARGER SIZE */
-    color: var(--text-color);
-    margin-bottom: 1rem;
-}
-
-.skills-card ul {
-    list-style: none;
-    padding-left: 0;
-    margin-top: 1rem;
-}
-
-.skills-card ul li {
-    font-size: 1.6rem;
-    margin-bottom: 1rem;
-    position: relative;
-    padding-left: 2rem;
-}
-
-.skills-card ul li::before {
-    content: '\2022'; /* Unicode bullet point */
-    color: var(--secondary-color);
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-}
-
-/* Ensure skills section respects dark mode */
-body.dark-mode .skills-card {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--main-color);
-}
-body.dark-mode .skills-card:hover {
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(100, 170, 231, 0.5);
-}
-
-/* NEW SECTION STYLES: PROJECTS */
-.projects {
-    background: var(--snd-bg-color);
-}
-
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    margin-top: 5rem;
-}
-
-.project-card {
-    background: var(--main-color);
-    border-radius: 1rem;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    /* Set up for 3D and lift effect */
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    transform-style: preserve-3d;
-}
-
-/* 3D and Lift Effect on Hover */
-.project-card:hover {
-    /* Lift and rotate slightly in 3D space */
-    transform: translateY(-15px) rotateX(5deg) rotateY(-5deg);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2), 0 0 30px var(--secondary-color);
-}
-
-.project-content {
-    padding: 2.5rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: left;
-    position: relative;
-    z-index: 10;
-}
-
-.project-card i {
-    font-size: 4rem;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-    transition: all 0.5s ease;
-}
-
-.project-card:hover i {
-    transform: scale(1.1) rotate(5deg);
-}
-
-.project-card h3 {
-    font-size: 2.2rem; /* Adjusted size */
-    color: var(--text-color);
-    margin-bottom: 0.5rem;
-}
-
-.project-card .role {
-    font-size: 1.4rem;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-/* Inner Detail Animation Setup */
-.project-details {
-    margin-top: 1.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-    flex-grow: 1;
-}
-
-.project-card:hover .project-details {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.project-details h4 {
-    font-size: 1.7rem;
-    color: var(--text-color);
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    border-bottom: 1px solid var(--snd-bg-color);
-    padding-bottom: 0.3rem;
-}
-
-.project-details p {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.project-link {
-    width: 100%;
-    text-align: center;
-    margin-top: 2rem;
-    padding: 1rem;
-    font-size: 1.5rem;
-    /* Ensure the button is visible regardless of the detail slide */
-}
-
-/* Dark Mode specific project adjustments */
-body.dark-mode .project-card {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    border: 1px solid var(--main-color);
-}
-body.dark-mode .project-card:hover {
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(100, 170, 231, 0.5);
-}
-
-
-/* Problem Solving Section (Restored basic background) */
-.problemsolving {
-    background: var(--bg-color); 
-    padding-bottom: 5rem;
-    overflow: hidden;
-}
-
-/* Remove animated backgrounds */
-#problemsolving::before {
-    content: none;
-}
-/* ----------------------------- */
-
-.problemsolving-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: left;
-    /* Set up a two-column grid for the case study text and the menu */
-    display: grid;
-    grid-template-columns: 1fr; /* Default to single column */
-    gap: 4rem;
-}
-
-/* Grid for the CTO text */
-.cto-case-study {
-    margin-top: 3rem;
-    padding: 2rem;
-    border-left: 5px solid var(--secondary-color);
-    background: var(--snd-bg-color);
-    border-radius: 0.8rem;
-    position: relative; 
-}
-
-.cto-case-study p,
-.cto-case-study ul {
-    font-size: 1.7rem;
-    margin-bottom: 1.5rem;
-}
-
-.cto-case-study .sub-heading {
-    font-size: 2.5rem;
-    color: var(--secondary-color);
-    margin: 2rem 0 1rem;
-}
-
-.cto-case-study ul {
-    list-style: disc;
-    padding-left: 2rem;
-}
-
-.cto-case-study li {
-    margin-bottom: 0.8rem;
-}
-
-/* NEW: Genre Selector Wrapper and Styles */
-.genre-selector-wrapper {
-    margin-top: 3rem;
-    padding: 2rem;
-    background: var(--main-color);
-    border-radius: 0.8rem;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-    text-align: center;
-    position: relative; 
-}
-
-.genre-selector {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    overflow-x: auto; /* Allows horizontal scrolling on small devices */
-    padding: 1rem 0;
-}
-
-.genre-option {
-    padding: 1rem 2rem;
-    background: var(--snd-bg-color);
-    color: var(--text-color);
-    font-weight: 600;
-    border-radius: 3rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex-shrink: 0; /* Prevents options from shrinking */
-}
-
-.genre-option:hover,
-.genre-option.active {
-    background: var(--secondary-color);
-    color: var(--main-color);
-    transform: scale(1.05);
-}
-
-
-/* INTERACTIVE MENU STYLES */
-.menu-interactive {
-    margin-top: 3rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    background: var(--snd-bg-color); /* Same background as case study */
-    padding: 2rem;
-    border-radius: 0.8rem;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-    position: relative; 
-}
-
-.menu-item-card {
-    background: var(--main-color);
-    color: var(--text-color);
-    padding: 2rem;
-    border-radius: 0.5rem;
-    text-align: center;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Added box shadow for lift effect */
-    /* ENHANCED HOVER EFFECT FOR MENU ITEMS */
-    transition: transform 0.5s ease, box-shadow 0.5s ease; 
-    transform-style: preserve-3d;
-}
-
-.menu-item-card:hover {
-    transform: translateY(-5px) rotateX(1deg) rotateY(-1deg); /* Subtle 3D lift/tilt */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2), 0 0 10px var(--secondary-color); /* Glow */
-}
-
-.menu-item-card i {
-    font-size: 3rem;
-    color: var(--secondary-color);
-    transition: transform 0.4s ease-out;
-    margin-bottom: 1rem;
-}
-
-.menu-item-card h4 {
-    font-size: 2.2rem;
-    color: var(--secondary-color);
-}
-
-.menu-item-card p {
-    font-size: 1.4rem;
-    margin-bottom: 1rem;
-}
-
-.menu-item-card .price {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--text-color);
-    margin-top: 1rem;
-}
-
-/* Contact Section (Restored basic background) */
-.contact {
-    background: var(--snd-bg-color);
-}
-
-/* Remove animated backgrounds */
-#contact::before {
-    content: none;
-}
-/* ----------------------------- */
-
-.contact-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center items when wrapping */
-    gap: 4rem;
-    margin-top: 5rem;
-    position: relative; /* Ensure content shadows/z-index is above animation layer */
-}
-
-.contact-container form {
-    flex: 1 1 40rem; /* Form takes half width, minimum base 40rem */
-    max-width: 60rem;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.contact-details {
-    margin-bottom: 2rem;
-    text-align: left;
-    font-size: 1.8rem;
-}
-
-.contact-details h3 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    color: var(--secondary-color);
-}
-
-.contact-details p {
-    margin: 0.5rem 0;
-}
-
-.contact-details .social-media {
-    opacity: 1; /* Override animation for constant display */
-    margin-top: 1rem;
-}
-
-/* --- Form Field Polish (Cleaner) --- */
-.input-box input,
-.contact-container form textarea {
-    width: 100%;
-    padding: 1.5rem;
-    font-size: 1.6rem;
-    color: var(--text-color);
-    background: var(--main-color);
-    border: 1px solid var(--snd-bg-color); /* Added thin border for definition */
-    border-radius: 0.8rem;
-    margin: 0.7rem 0;
-    transition: all 0.3s ease; /* Added transition for smooth focus */
-}
-
-.input-box input:focus,
-.contact-container form textarea:focus {
-    border-color: var(--secondary-color);
-    box-shadow: 0 0 1rem rgba(100, 170, 231, 0.4); /* Subtle glow effect */
-}
-/* ------------------------------------- */
-
-.input-box input {
-    width: 49%;
-}
-
-.contact-container form textarea {
-    resize: none;
-}
-
-/* MAP ADJUSTMENTS: Reverted to embedded map with custom link below */
-.map-container {
-    flex: 1 1 45rem; 
-    min-height: 300px; /* Set minimum height for the embedded map */
-    max-width: 100%;
-    display: flex; 
-    flex-direction: column;
-    align-items: center; 
-}
-
-.map-container .heading {
-    margin-bottom: 2rem;
-}
-
-/* iframe styling to fill container height */
-.map-container iframe {
-    border-radius: 0.8rem;
-    width: 100%;
-    height: 100%;
-    flex-grow: 1; 
-}
-
-/* Custom styling for the external map link button */
-.map-external-link {
-    /* Uses existing .btn styling for primary look */
-    margin-top: 2rem;
-    display: inline-flex;
-    align-items: center;
-    text-align: center;
-}
-
-.map-external-link i {
-    margin-left: 0.8rem;
-    font-size: 1.8rem;
-}
-
-
-/* ---------------------------------- */
-/* MOBILE STYLES (Max 768px width) */
-/* ---------------------------------- */
-@media (max-width: 768px) {
-    
-    /* FIX: Ensure icon is visible and aligned to the right, separate from the content flow */
-    #menu-icon {
-        display: block;
-        /* Aligned in the header flex container */
-        z-index: 1001; /* Must be above the sliding navbar */
-    }
-    
-    .header {
-        padding: 2rem 5%;
+    // --- TYPING ANIMATION LOGIC ---
+    const roles = ["Web Developer", "Frontend Developer", "Backend Developer"];
+    const roleElement = document.getElementById('role-text');
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 150;
+    let deletingSpeed = 75;
+    let delay = 2000;
+
+    function typeWriter() {
+        const currentRole = roles[roleIndex];
+
+        // START: Cursor visibility during typing/deleting
+        roleElement.classList.add('typing'); 
+
+        if (isDeleting) {
+            // Deleting text
+            roleElement.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = deletingSpeed;
+        } else {
+            // Typing text
+            roleElement.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 150;
+        }
+
+        if (!isDeleting && charIndex === currentRole.length) {
+            // Finished typing the current role, start idling/delay
+            typingSpeed = delay;
+            isDeleting = true;
+            // HIDE CURSOR during static display (idling)
+            roleElement.classList.remove('typing'); 
+
+        } else if (isDeleting && charIndex === 0) {
+            // Finished deleting, move to the next role
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            typingSpeed = 300; // Small delay before typing the next word
+        }
+
+        setTimeout(typeWriter, typingSpeed);
     }
 
-    /* NAV BAR MOBILE OVERLAY FIX */
-    .navbar {
-        position: fixed;
-        top: 0; 
-        right: -100%; 
-        width: 100%;
-        height: 100vh;
+    // Start the typing animation once the page is loaded
+    document.addEventListener('DOMContentLoaded', typeWriter);
+
+
+    // --- Menu Toggle Logic ---
+    menuIcon.onclick = () => {
+        navBar.classList.toggle('active-nav');
+        menuIcon.classList.toggle('bx-x'); // Changes icon to 'X'
+    };
+
+    // Close menu when a navigation link is clicked (mobile experience improvement)
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navBar.classList.contains('active-nav')) {
+                navBar.classList.remove('active-nav');
+                menuIcon.classList.remove('bx-x');
+            }
+        });
+    });
+
+    // --- DARK MODE LOGIC (System Preference + Manual Toggle) ---
+    const activateDarkMode = (enable) => {
+        if (enable) {
+            body.classList.add('dark-mode');
+            themeToggle.classList.replace('bx-moon', 'bx-sun');
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            body.classList.remove('dark-mode');
+            themeToggle.classList.replace('bx-sun', 'bx-moon');
+            localStorage.setItem('darkMode', 'disabled');
+        }
+    };
+
+    // 1. Initial Theme Check
+    const storedPreference = localStorage.getItem('darkMode');
+    const systemPreference = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (storedPreference === 'enabled') {
+        activateDarkMode(true);
+    } else if (storedPreference === 'disabled') {
+        activateDarkMode(false);
+    } else {
+        // If no preference stored, follow system setting
+        activateDarkMode(systemPreference);
+    }
+
+
+    // 2. Toggle listener
+    themeToggle.addEventListener('click', () => {
+        // Toggle the current mode
+        activateDarkMode(!body.classList.contains('dark-mode'));
+    });
+    
+    // 3. Optional: Listen for system changes (if no manual preference is stored)
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        // Only change automatically if the user hasn't set a manual preference
+        if (localStorage.getItem('darkMode') === null) {
+            activateDarkMode(e.matches);
+        }
+    });
+
+    // --- SCROLL ANIMATION LOGIC ---
+    const scrollHandler = () => {
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        // 1. Highlight active navigation link
+        sections.forEach(sec => {
+            let top = window.scrollY;
+            let offset = sec.offsetTop - 150;
+            let height = sec.offsetHeight;
+            let id = sec.getAttribute('id');
+
+            if (top >= offset && top < offset + height) {
+                navLinks.forEach(links => {
+                    links.classList.remove('active');
+                });
+                // Assuming nav links use href="#id"
+                const activeLink = document.querySelector('.navbar a[href*=' + id + ']');
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                }
+            }
+        });
         
-        display: flex; 
-        flex-direction: column; 
-        justify-content: flex-start; 
-        align-items: flex-start;
+        // 2. Animate elements on scroll (Show/Hide bi-directionally)
+        animatedElements.forEach(element => {
+            const rect = element.getBoundingClientRect();
+
+            // Condition to show: Element top is visible (above 85% of window height) AND 
+            // the element bottom has not passed completely over the top edge of the window.
+            if (rect.top <= windowHeight * 0.85 && rect.bottom >= 0) {
+                element.classList.add('show-animate');
+            } else {
+                // Condition to hide: Element is outside the viewport (above or below)
+                element.classList.remove('show-animate');
+            }
+        });
+    };
+
+    // Run on load and on scroll
+    window.addEventListener('scroll', scrollHandler);
+    window.addEventListener('load', scrollHandler);
+
+    // Initial check for elements already in view on page load
+    scrollHandler();
+    
+    // --- INTERACTIVE MENU LOGIC ---
+    const menuItems = {
+        all: [
+            { icon: 'bx-music', title: 'Classical Overture', desc: 'Delicate French Onion Soup. Elegant and timeless. (Mood: Orchestral)', price: '£8.50', genre: 'classical' },
+            { icon: 'bx-microphone', title: 'Hip Hop Fusion', desc: 'Spicy Korean BBQ Tacos with a lime kick. Bold and complex. (Mood: Street Style)', price: '£14.99', genre: 'hiphop' },
+            { icon: 'bx-volume-full', title: 'Rock Anthem Platter', desc: 'Bourbon-glazed Chili Ribs served with a heavy side of smoked beans. (Mood: Hard & Heavy)', price: '£21.00', genre: 'rock' },
+            { icon: 'bx-headphone', title: 'Jazz Riff Dessert', desc: 'Warm Chocolate Lava Cake with cool vanilla bean ice cream. Smooth and improvised. (Mood: Velvet Smooth)', price: '£9.25', genre: 'jazz' },
+            { icon: 'bx-git-branch', title: 'R&B Slow Jam', desc: 'Smoked Salmon Risotto with Creamy Dill Sauce. Comforting and soulful.', price: '£18.00', genre: 'rnb' }
+        ],
+        classical: [
+            { icon: 'bx-music', title: 'Classical Overture', desc: 'Delicate French Onion Soup. Elegant and timeless. (Mood: Orchestral)', price: '£8.50' },
+            { icon: 'bx-wine', title: 'Vivace Salad', desc: 'Light, crisp greens with raspberry vinaigrette and candied pecans.', price: '£7.00' }
+        ],
+        hiphop: [
+            { icon: 'bx-microphone', title: 'Hip Hop Fusion', desc: 'Spicy Korean BBQ Tacos with a lime kick. Bold and complex. (Mood: Street Style)', price: '£14.99' },
+            { icon: 'bx-layer-plus', title: 'Mixtape Fries', desc: 'Loaded fries with three layers of cheese, bacon, and chili.', price: '£11.50' }
+        ],
+        rock: [
+            { icon: 'bx-volume-full', title: 'Rock Anthem Platter', desc: 'Bourbon-glazed Chili Ribs served with a heavy side of smoked beans. (Mood: Hard & Heavy)', price: '£21.00' },
+            { icon: 'bx-band-aid', title: 'Power Chord Burger', desc: 'Triple patty burger with aged cheddar and smoky BBQ sauce.', price: '£16.50' }
+        ],
+        jazz: [
+            { icon: 'bx-headphone', title: 'Jazz Riff Dessert', desc: 'Warm Chocolate Lava Cake with cool vanilla bean ice cream. Smooth and improvised. (Mood: Velvet Smooth)', price: '£9.25' },
+            { icon: 'bx-coffee', title: 'Blue Note Espresso', desc: 'Rich espresso with a hint of caramel and sea salt.', price: '£4.00' }
+        ]
+    };
+
+    const menuContainer = document.getElementById('menu-interactive');
+    const genreOptions = document.querySelectorAll('.genre-option');
+
+    function renderMenu(genre) {
+        menuContainer.innerHTML = '';
+        const items = menuItems[genre] || menuItems.all;
+
+        items.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'menu-item-card';
+            card.innerHTML = `
+                <i class='bx ${item.icon}' ></i>
+                <h4>${item.title}</h4>
+                <p>${item.desc}</p>
+                <span class="price">${item.price}</span>
+            `;
+            menuContainer.appendChild(card);
+        });
+    }
+
+    function handleGenreSelection(event) {
+        // Find the closest option element
+        const option = event.target.closest('.genre-option');
+        if (!option) return;
         
-        background: var(--secondary-color);
-        transition: right 0.4s ease-in-out;
-        z-index: 999;
-        overflow-y: auto;
-        padding: 10rem 5%; 
-        backdrop-filter: none;
+        // Remove active class from all options
+        genreOptions.forEach(opt => opt.classList.remove('active'));
+        
+        // Set the active class on the clicked option
+        option.classList.add('active');
+        
+        // Render the corresponding menu
+        const genre = option.getAttribute('data-genre');
+        renderMenu(genre);
     }
     
-    /* Active state: slide in from the right */
-    .navbar.active-nav {
-        right: 0;
-    }
+    // Attach listener to the selector wrapper
+    document.getElementById('genre-selector').addEventListener('click', handleGenreSelection);
 
-    .navbar a {
-        display: block;
-        margin: 1.5rem 0;
-        font-size: 2.8rem; 
-        width: 100%; 
-        text-align: left;
-        padding: 1rem 0;
-    }
+    // Initial render when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+        renderMenu('all');
+    });
 
-    .navbar a:hover,
-    .navbar a.active {
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 0.5rem;
-        border-bottom: none;
-    }
-    
-    /* Move the toggle button inside the mobile nav and adjust alignment */
-    #theme-toggle {
-        margin-left: 0;
-        margin-top: 3rem;
-        font-size: 3.2rem;
-        color: var(--main-color); 
-    }
+</script>
 
-    /* Grid Mobile Fixes */
-    .skills-container {
-        grid-template-columns: 1fr;
-    }
-
-    .projects-container {
-        grid-template-columns: 1fr;
-    }
-
-    .menu-interactive {
-        grid-template-columns: 1fr;
-    }
-    
-    .about, .home {
-        flex-direction: column;
-    }
-    
-    .home-img, .about-img {
-        order: -1; /* Puts image above text on mobile */
-        margin-bottom: 3rem;
-    }
-    
-    .home-content, .about-content {
-        margin-left: 0;
-        text-align: center;
-    }
-    
-    .home-content h3 {
-        text-align: center;
-    }
-    
-    .home-content h1 {
-        font-size: 3rem; /* Adjusted size */
-    }
-
-    .heading {
-        font-size: 3rem; /* Adjusted size */
-    }
-
-    .home-img img, .about-img img {
-        width: 60vw;
-        height: 60vw;
-        max-width: 300px;
-        max-height: 300px;
-    }
-    
-    .contact-container {
-        /* Forces the map/form split to stack */
-        flex-direction: column; 
-    }
-}
+</body>
+</html>
